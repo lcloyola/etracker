@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20121110100652) do
     t.string   "model"
     t.string   "name"
     t.string   "condition"
-    t.boolean  "is_active",            :default => false
+    t.boolean  "is_active",            :default => true
     t.integer  "user_id"
     t.integer  "location_id"
     t.integer  "item_id"
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(:version => 20121110100652) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
   add_index "units", ["location_id"], :name => "index_units_on_location_id"

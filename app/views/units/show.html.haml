@@ -1,5 +1,5 @@
 %p#notice= notice
-
+%h4= @unit.item.name
 %p
   %b Aquisition date:
   = @unit.aquisition_date
@@ -23,13 +23,13 @@
   = @unit.is_active
 %p
   %b User:
-  = @unit.user
+  = @unit.user.email
 %p
   %b Location:
-  = @unit.location
+  = @unit.location.name
 %p
   %b Barcode:
-  = @unit.barcode
+  = image_tag @unit.barcode.url
 %p
   %b Avatar:
   = @unit.avatar
@@ -37,3 +37,4 @@
 = link_to 'Edit', edit_unit_path(@unit)
 \|
 = link_to 'Back', units_path
+

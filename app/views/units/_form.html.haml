@@ -5,7 +5,9 @@
       %ul
         - @unit.errors.full_messages.each do |msg|
           %li= msg
-
+  .field
+    = f.label :item_type
+    = collection_select :unit, :item_id, Item.all, :id, :name, :include_blank => true
   .field
     = f.label :aquisition_date
     = f.date_select :aquisition_date
@@ -29,15 +31,16 @@
     = f.check_box :is_active
   .field
     = f.label :user
-    = f.text_field :user
+    = collection_select :unit, :user_id, User.all, :id, :email
   .field
     = f.label :location
-    = f.text_field :location
+    = collection_select :unit, :location_id, Location.all, :id, :name
   .field
     = f.label :barcode
-    = f.text_field :barcode
+    = image_tag @unit.barcode.url
   .field
     = f.label :avatar
-    = f.text_field :avatar
+    = f.file_field :avatar
   .actions
     = f.submit 'Save'
+

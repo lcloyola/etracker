@@ -26,8 +26,10 @@ end
 class Unit < ActiveRecord::Base
   belongs_to :user
   belongs_to :location
+  belongs_to :item
+
   attr_accessible :aquisition_cost, :aquisition_date, :brand, :condition, :is_active, :model, :serial_no
-  attr_accessible :barcode_file_name
+  attr_accessible :barcode_file_name, :item_id, :user_id, :location_id
 
 	has_attached_file :avatar
 	has_attached_file :barcode
@@ -37,6 +39,10 @@ class Unit < ActiveRecord::Base
 
   scope :unassigned, where(:user_id => nil)
 
+  def unassigned?
+    return true unless self.item_id.present?
+    return false
+  end
 protected
   def generate_barcode_image
 	  path = Rails.root.to_s + '/public/system/barcode_images/cgi'

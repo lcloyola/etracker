@@ -8,7 +8,7 @@ class CreateUnits < ActiveRecord::Migration
       t.string :model
       t.string :name
       t.string :condition
-      t.boolean :is_active, :default => false
+      t.boolean :is_active, :default => true
       t.references :user
       t.references :location
       t.references :item
