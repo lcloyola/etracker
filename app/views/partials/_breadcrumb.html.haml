@@ -1,0 +1,6 @@
+%ul.breadcrumb
+  - @breadcrumb.each do |b|
+    %li
+      = link_to b[0], b[1]
+      %span.divider >
+
