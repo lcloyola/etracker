@@ -1,7 +1,8 @@
 Etracker::Application.routes.draw do
   match "generate_barcode"         => "units#barcode_generate"
   match "available_barcode"        => "units#barcodes_available"
-  post  "/search"                  => "units#search"
+  post  "/search_unit"             => "search#unit"
+  match "/search"                  => "search#index"
 
   resources :units
 

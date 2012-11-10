@@ -5,6 +5,20 @@
       %ul
         - @unit.errors.full_messages.each do |msg|
           %li= msg
+  %h3 Status
+  .field
+    = f.label :condition
+    = f.text_field :condition
+  .field
+    = f.label :is_active
+    = f.check_box :is_active
+  .field
+    = f.label :user
+    = collection_select :unit, :user_id, User.all, :id, :email
+  .field
+    = f.label :location
+    = collection_select :unit, :location_id, Location.all, :id, :name
+  %h3 Details
   .field
     = f.label :item_type
     = collection_select :unit, :item_id, Item.all, :id, :name, :include_blank => true
@@ -23,18 +37,6 @@
   .field
     = f.label :model
     = f.text_field :model
-  .field
-    = f.label :condition
-    = f.text_field :condition
-  .field
-    = f.label :is_active
-    = f.check_box :is_active
-  .field
-    = f.label :user
-    = collection_select :unit, :user_id, User.all, :id, :email
-  .field
-    = f.label :location
-    = collection_select :unit, :location_id, Location.all, :id, :name
   .field
     = f.label :barcode
     = image_tag @unit.barcode.url

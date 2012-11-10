@@ -100,13 +100,5 @@ class UnitsController < ApplicationController
     end
     redirect_to "/available_barcode"
   end
-  def search
-    @unit = Unit.find(params[:post][:id])
-    if @unit.unassigned?
-      redirect_to "/units/#{@unit.id}/edit"
-    else
-      redirect_to "/units/#{@unit.id}"
-    end
-  end
 end
 
