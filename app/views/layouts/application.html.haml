@@ -40,7 +40,7 @@
               %p.navbar-text.pull-right
                 Logged in as
                 %a.navbar-link= current_user.email
-                %button.btn.btn-small= link_to 'Logout', destroy_user_session_path, :method => :delete
+                %a.navbar-link= link_to 'Logout', destroy_user_session_path, :method => :delete
             %ul.nav
               %li
                 %a{:href => "/"} Home
@@ -52,6 +52,7 @@
                 %li= link_to "Locatons", locations_path
                 %li= link_to "Units", units_path
                 %li= link_to "Barcodes", "/available_barcode"
+                %li= link_to 'Search', "/search"
           / /.nav-collapse
     .container-fluid
       .row-fluid

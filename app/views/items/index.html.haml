@@ -1,20 +1,21 @@
 %h1 Listing items
 
-%table.table.table-striped.sortable
-  %thead
-    %th Name
-    %th Description
-    %th
-    %th
-    %th
-  %tbody
-    - @items.each do |item|
+#no-more-tables
+  %table.table.table-striped.sortable
+    %thead
       %tr
-        %td= item.name
-        %td= item.description
-        %td= link_to 'Show', item
-        %td= link_to 'Edit', edit_item_path(item)
-        %td= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Name
+        %th Description
+        %th Action
+    %tbody
+      - @items.each do |item|
+        %tr
+          %td{:style => "data-title: 'Name'"}= item.name
+          %td{:style => "data-title: 'Description'"}= item.description
+          %td{:style => "data-title: 'Action'"}
+            = link_to 'Show', item
+            = link_to 'Edit', edit_item_path(item)
+            = link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
