@@ -8,6 +8,12 @@ development:
   database: db/development.sqlite3
   pool: 5
   timeout: 5000
+  username: root
+  password:
+  socket: /opt/lampp/var/mysql/mysql.sock
+  adapter: mysql2
+  encoding: utf8
+  database: etracker
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -23,3 +29,4 @@ production:
   database: db/production.sqlite3
   pool: 5
   timeout: 5000
+
