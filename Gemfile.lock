@@ -158,6 +158,7 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.1)
       rack (>= 1.0)
+    wicked_pdf (0.7.9)
 
 PLATFORMS
   ruby
@@ -179,3 +180,4 @@ DEPENDENCIES
   sqlite3
   therubyracer
   uglifier (>= 1.0.3)
+  wicked_pdf
