@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  unit: 
+  status: 1
+  remarks: MyString
+  user: 
+
+two:
+  unit: 
+  status: 1
+  remarks: MyString
+  user: 
