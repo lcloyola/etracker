@@ -1,5 +1,8 @@
 - if current_user.present?
   .well.sidebar-nav
     %ul.nav.nav-tabs.nav-stacked
-      %li.nav-header Categories
+      %li.nav-header Items
+      - Item.limit(10).each do |i|
+        %li= link_to i.name, i
+      %li.pull-right= link_to "see more...", items_path
 
