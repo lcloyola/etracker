@@ -47,6 +47,9 @@
               - unless current_user.present?
                 %li
                   %a{:href => "/users/sign_in"} User Login
+              - else
+                %li= link_to "Items", items_path
+                %li= link_to "Locatons", locations_path
           / /.nav-collapse
     .container-fluid
       .row-fluid

@@ -1,4 +1,6 @@
 Etracker::Application.routes.draw do
+  resources :locations
+
   resources :items
 
   devise_for :users
