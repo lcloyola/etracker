@@ -61,8 +61,15 @@ class UnitsController < ApplicationController
 
     respond_to do |format|
       if @unit.update_attributes(params[:unit])
-        format.html { redirect_to @unit, notice: 'Unit was successfully updated.' }
-        format.json { head :no_content }
+        if params[:commit] == "Save"
+          format.html { redirect_to @unit, notice: '<div class="alert alert-success">Unit was successfully updated.</div>' }
+        else
+          newL = Log.create(:unit_id => @unit.id, :user_id => current_user, :status => @unit.status_invert)
+          format.html {
+            redirect_to "/search", notice: "<div class='alert alert-success'>Unit was successfully #{@unit.status_label}</div>"
+          }
+          format.json { head :no_content }
+        end
       else
         format.html { render action: "edit" }
         format.json { render json: @unit.errors, status: :unprocessable_entity }

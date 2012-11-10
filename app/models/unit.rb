@@ -27,6 +27,7 @@ class Unit < ActiveRecord::Base
   belongs_to :user
   belongs_to :location
   belongs_to :item
+  has_many :logs
 
   attr_accessible :aquisition_cost, :aquisition_date, :brand, :condition, :is_active, :model, :serial_no
   attr_accessible :barcode_file_name, :item_id, :user_id, :location_id
@@ -43,6 +44,18 @@ class Unit < ActiveRecord::Base
   def unassigned?
     return true unless self.item_id.present?
     return false
+  end
+  def logged_in?
+    return true if self.logs.empty? || self.logs.last.status == UnitStatus::In
+    return false
+  end
+  def status_invert
+    return UnitStatus::Out if self.logs.empty? || self.logs.last.status == UnitStatus::In
+    return UnitStatus::In
+  end
+  def status_label
+    return "logged in" if self.logs.empty? || self.logs.last.status == UnitStatus::In
+    return "logged out"
   end
 protected
   def generate_barcode_image

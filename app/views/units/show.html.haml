@@ -1,5 +1,11 @@
-%p#notice= notice
-%h4= @unit.item.name
+%p#notice= raw notice
+%h4
+  = @unit.item.name
+  = "(#{@unit.id})"
+  - if @unit.status_label == "logged in"
+    .label.label-success= "logged in"
+  - else
+    .label.label-warning= "logged outs"
 %p
   %b Aquisition date:
   = @unit.aquisition_date
