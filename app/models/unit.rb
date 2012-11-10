@@ -38,6 +38,7 @@ class Unit < ActiveRecord::Base
   after_create :generate_barcode_image
 
   scope :unassigned, where(:user_id => nil)
+  scope :active, where(:is_active => true)
 
   def unassigned?
     return true unless self.item_id.present?

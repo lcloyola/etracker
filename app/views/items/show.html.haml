@@ -1,12 +1,31 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @item.name
+%h3= @item.name
+%h5= "#{@item.units.active.count} #{@item.quantity_unit} active out of #{@item.units.count}  units"
 %p
   %b Description:
   = @item.description
 
+%table.table.table-striped.sortable
+  %thead
+    %th ID
+    %th Brand
+    %th Serial Number
+    %th Model
+    %th Location
+    %th User
+    %th Condition
+  %tbody
+    - @item.units.each do |i|
+      %tr
+        %td= i.id
+        %td= i.brand
+        %td= i.serial_no
+        %td= i.model
+        %td= i.location.name
+        %td= i.user.email
+        %td= i.condition
 = link_to 'Edit', edit_item_path(@item)
 \|
 = link_to 'Back', items_path
+

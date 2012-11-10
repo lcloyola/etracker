@@ -1,12 +1,33 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @location.name
+%h3= @location.name
+%h5= "#{@location.units.active.count} active out of #{@location.units.count}  units"
+
 %p
   %b Description:
   = @location.description
 
+%table.table.table-striped.sortable
+  %thead
+    %th ID
+    %th Brand
+    %th Serial Number
+    %th Model
+    %th User
+    %th Condition
+    %th Status
+  %tbody
+    - @location.units.each do |i|
+      %tr
+        %td= i.id
+        %td= i.brand
+        %td= i.serial_no
+        %td= i.model
+        %td= i.user.email
+        %td= i.condition
+        %td= i.is_active
+
 = link_to 'Edit', edit_location_path(@location)
 \|
 = link_to 'Back', locations_path
+
