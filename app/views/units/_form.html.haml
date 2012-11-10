@@ -1,0 +1,43 @@
+= form_for @unit do |f|
+  - if @unit.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@unit.errors.count, "error")} prohibited this unit from being saved:"
+      %ul
+        - @unit.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :aquisition_date
+    = f.date_select :aquisition_date
+  .field
+    = f.label :aquisition_cost
+    = f.text_field :aquisition_cost
+  .field
+    = f.label :brand
+    = f.text_field :brand
+  .field
+    = f.label :serial_no
+    = f.text_field :serial_no
+  .field
+    = f.label :model
+    = f.text_field :model
+  .field
+    = f.label :condition
+    = f.text_field :condition
+  .field
+    = f.label :is_active
+    = f.check_box :is_active
+  .field
+    = f.label :user
+    = f.text_field :user
+  .field
+    = f.label :location
+    = f.text_field :location
+  .field
+    = f.label :barcode
+    = f.text_field :barcode
+  .field
+    = f.label :avatar
+    = f.text_field :avatar
+  .actions
+    = f.submit 'Save'

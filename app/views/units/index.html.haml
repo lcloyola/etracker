@@ -1,0 +1,39 @@
+%h1 Listing units
+
+%table
+  %tr
+    %th Aquisition date
+    %th Aquisition cost
+    %th Brand
+    %th Serial no
+    %th Model
+    %th Condition
+    %th Is active
+    %th User
+    %th Location
+    %th Barcode
+    %th Avatar
+    %th
+    %th
+    %th
+
+  - @units.each do |unit|
+    %tr
+      %td= unit.aquisition_date
+      %td= unit.aquisition_cost
+      %td= unit.brand
+      %td= unit.serial_no
+      %td= unit.model
+      %td= unit.condition
+      %td= unit.is_active
+      %td= unit.user
+      %td= unit.location
+      %td= unit.barcode
+      %td= unit.avatar
+      %td= link_to 'Show', unit
+      %td= link_to 'Edit', edit_unit_path(unit)
+      %td= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Unit', new_unit_path

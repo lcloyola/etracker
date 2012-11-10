@@ -1,4 +1,6 @@
 Etracker::Application.routes.draw do
+  resources :units
+
   resources :locations
 
   resources :items

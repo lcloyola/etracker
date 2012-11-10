@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b Aquisition date:
+  = @unit.aquisition_date
+%p
+  %b Aquisition cost:
+  = @unit.aquisition_cost
+%p
+  %b Brand:
+  = @unit.brand
+%p
+  %b Serial no:
+  = @unit.serial_no
+%p
+  %b Model:
+  = @unit.model
+%p
+  %b Condition:
+  = @unit.condition
+%p
+  %b Is active:
+  = @unit.is_active
+%p
+  %b User:
+  = @unit.user
+%p
+  %b Location:
+  = @unit.location
+%p
+  %b Barcode:
+  = @unit.barcode
+%p
+  %b Avatar:
+  = @unit.avatar
+
+= link_to 'Edit', edit_unit_path(@unit)
+\|
+= link_to 'Back', units_path

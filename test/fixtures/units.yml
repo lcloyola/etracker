@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  aquisition_date: 2012-11-10
+  aquisition_cost: 1.5
+  brand: MyString
+  serial_no: MyString
+  model: MyString
+  condition: MyString
+  is_active: false
+  user: 
+  location: 
+  barcode: 
+  avatar: 
+
+two:
+  aquisition_date: 2012-11-10
+  aquisition_cost: 1.5
+  brand: MyString
+  serial_no: MyString
+  model: MyString
+  condition: MyString
+  is_active: false
+  user: 
+  location: 
+  barcode: 
+  avatar: 
