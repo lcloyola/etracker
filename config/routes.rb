@@ -1,4 +1,7 @@
 Etracker::Application.routes.draw do
+  match "generate_barcode"         => "units#barcode_generate"
+  match "available_barcode"        => "units#barcodes_available"
+
   resources :units
 
   resources :locations
@@ -6,6 +9,7 @@ Etracker::Application.routes.draw do
   resources :items
 
   devise_for :users
+
   root :to => 'home#index'
 
   # The priority is based upon order of creation:

@@ -34,10 +34,12 @@ ActiveRecord::Schema.define(:version => 20121110100652) do
     t.string   "brand"
     t.string   "serial_no"
     t.string   "model"
+    t.string   "name"
     t.string   "condition"
     t.boolean  "is_active",            :default => false
     t.integer  "user_id"
     t.integer  "location_id"
+    t.integer  "item_id"
     t.string   "barcode_file_name"
     t.string   "barcode_content_type"
     t.integer  "barcode_file_size"

@@ -1,0 +1,17 @@
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+      %title Forms
+      %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+        %meta{:content => "", :name => "description"}
+          %meta{:content => "", :name => "author"}
+            / Le styles
+            :css
+              body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+                background-color: #FFF;
+              }
+  %body
+    = yield
+

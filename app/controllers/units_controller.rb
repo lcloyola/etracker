@@ -80,4 +80,25 @@ class UnitsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def barcodes_available
+    @unit = Unit.new
+    @units = Unit.unassigned
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "barcodes_available.pdf", :layout => "pdf.html"
+      end
+    end
+  end
+
+  def barcode_generate
+    if params[:post][:quantity].present?
+      (1..params[:post][:quantity].to_i).each do |n|
+        Unit.create()
+      end
+    end
+    redirect_to "/available_barcode"
+  end
+
 end
+

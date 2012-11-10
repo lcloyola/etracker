@@ -1,0 +1,14 @@
+%h3
+  = "#{@units.count} unused barcodes found."
+  = link_to "(print)", "/available_barcode.pdf"
+
+= form_for @unit, :url => "/generate_barcode" do |f|
+  .field
+    %h4 Generate new barcodes:
+    %br= number_field :post, :quantity
+  .actions
+    = f.submit 'Generate'
+
+- @units.each do |u|
+  = image_tag u.barcode.url
+
