@@ -39,7 +39,10 @@ class Unit < ActiveRecord::Base
   after_create :generate_barcode_image
 
   scope :unassigned, where(:user_id => nil)
+  scope :assigned, where("user_id IS NOT NULL")
   scope :active, where(:is_active => true)
+
+  scope :logged_in, where(:status_label => "logged in")
 
   def unassigned?
     return true unless self.item_id.present?
@@ -56,6 +59,9 @@ class Unit < ActiveRecord::Base
   def status_label
     return "logged in" if self.logs.empty? || self.logs.last.status == UnitStatus::In
     return "logged out"
+  end
+  def alias
+    return "#{self.id} (#{self.item.name} #{self.brand} #{self.model})"
   end
 protected
   def generate_barcode_image
