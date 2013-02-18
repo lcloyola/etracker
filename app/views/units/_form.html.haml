@@ -1,3 +1,5 @@
+%h3= @unit.name
+%h5= @unit.fullname
 = form_for @unit do |f|
   - if @unit.errors.any?
     #error_explanation
@@ -5,7 +7,7 @@
       %ul
         - @unit.errors.full_messages.each do |msg|
           %li= msg
-  %h3 Status
+  %h4 Status
 
   = f.submit 'Save', :class => "btn btn-primary"
   - unless @unit.new_record? || @unit.unassigned?
@@ -27,7 +29,7 @@
   .field
     = f.label :location
     = collection_select :unit, :location_id, Location.all, :id, :name
-  %h3 Details
+  %h4 Details
   .field
     = f.label :name_or_description
     = f.text_field :name
