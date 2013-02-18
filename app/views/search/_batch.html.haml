@@ -1,4 +1,4 @@
-= select_tag "units", options_from_collection_for_select(Unit.assigned.active, "id", "alias"), :multiple => true, :class =>"chzn-select", :style=>"width:350px;"
+= select_tag "units", options_from_collection_for_select(Unit.assigned.active, "id", "fullname"), :multiple => true, :class =>"chzn-select", :style=>"width:350px;"
 :javascript
   $(document).ready(function() {
     $(".chzn-select").chosen();

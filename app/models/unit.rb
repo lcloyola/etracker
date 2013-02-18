@@ -42,8 +42,6 @@ class Unit < ActiveRecord::Base
   scope :assigned, where("user_id IS NOT NULL")
   scope :active, where(:is_active => true)
 
-  scope :logged_in, where(:status_label => "logged in")
-
   def unassigned?
     return true unless self.item_id.present?
     return false
@@ -60,7 +58,7 @@ class Unit < ActiveRecord::Base
     return "logged in" if self.logs.empty? || self.logs.last.status == UnitStatus::In
     return "logged out"
   end
-  def alias
+  def fullname
     return "#{self.id} (#{self.item.name} #{self.brand} #{self.model})"
   end
 protected
