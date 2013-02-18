@@ -1,45 +1,64 @@
-%tr#notice= raw notice
-%h4
-  = @unit.item.name
-  = "(#{@unit.id})"
-  = raw @unit.status_label
-%table.table.table-striped.sortable.table-bordered
-  %tr
-    %td Name / Description:
-    %td= @unit.name
-  %tr
-    %td Aquisition date:
-    %td= @unit.aquisition_date
-  %tr
-    %td Aquisition cost:
-    %td= @unit.aquisition_cost
-  %tr
-    %td Brand:
-    %td= @unit.brand
-  %tr
-    %td Serial no:
-    %td= @unit.serial_no
-  %tr
-    %td Model:
-    %td= @unit.model
-  %tr
-    %td Condition:
-    %td= @unit.condition
-  %tr
-    %td Is active:
-    %td= @unit.is_active
-  %tr
-    %td User:
-    %td= @unit.user.email
-  %tr
-    %td Location:
-    %td= @unit.location.name
-  %tr
-    %td Barcode:
-    %td= image_tag @unit.barcode.url
-  %tr
-    %td Avatar:
-    %td= image_tag @unit.avatar.url
+.row-fluid
+  .span7
+    %tr#notice= raw notice
+    %h4
+      = @unit.item.name
+      = "(#{@unit.id})"
+      = raw @unit.status_label
+
+    %table.table.table-striped.sortable.table-bordered
+      %tr
+        %td Name / Description:
+        %td= @unit.name
+      %tr
+        %td Aquisition date:
+        %td= @unit.aquisition_date
+      %tr
+        %td Aquisition cost:
+        %td= @unit.aquisition_cost
+      %tr
+        %td Brand:
+        %td= @unit.brand
+      %tr
+        %td Serial no:
+        %td= @unit.serial_no
+      %tr
+        %td Model:
+        %td= @unit.model
+      %tr
+        %td Condition:
+        %td= @unit.condition
+      %tr
+        %td Is active:
+        %td= @unit.is_active
+      %tr
+        %td User:
+        %td= @unit.user.email
+      %tr
+        %td Location:
+        %td= @unit.location.name
+      %tr
+        %td Barcode:
+        %td= image_tag @unit.barcode.url
+      %tr
+        %td Avatar:
+        %td= image_tag @unit.avatar.url
+
+  .span5
+    %h4 Unit Logs
+    %table.table.table-striped.table-bordered
+      %thead
+        %tr
+          %th Date Time
+          %th Status
+          %th User
+          %th Remarks
+      - @logs.each do |l|
+        %tr
+          %td= l.created_at
+          %td= raw l.status_label
+          %td= l.user.email
+          %td= l.remarks
 
 = link_to 'Edit', edit_unit_path(@unit)
 \|

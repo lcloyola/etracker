@@ -15,6 +15,7 @@ class UnitsController < ApplicationController
   # GET /units/1.json
   def show
     @unit = Unit.find(params[:id])
+    @logs = @unit.logs.limit(15).order(:created_at)
 
     respond_to do |format|
       format.html # show.html.erb
