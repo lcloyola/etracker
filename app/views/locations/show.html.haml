@@ -10,19 +10,16 @@
 %table.table.table-striped.sortable
   %thead
     %th ID
-    %th Brand
-    %th Serial Number
-    %th Model
+    %th Details
     %th User
     %th Condition
-    %th Status
+    %th Is Active?
   %tbody
     - @location.units.each do |i|
       %tr
         %td= i.id
-        %td= i.brand
-        %td= i.serial_no
-        %td= i.model
+        %td= i.name
+        %td= i.fullname
         %td= i.user.email
         %td= i.condition
         %td= i.is_active

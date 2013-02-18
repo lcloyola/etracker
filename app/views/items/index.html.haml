@@ -1,16 +1,22 @@
-%h1 Listing items
+%h3 All Items
 
 #no-more-tables
   %table.table.table-striped.sortable
     %thead
       %tr
         %th Name
+        %th Logged In
+        %th Active
+        %th Total
         %th Description
         %th Action
     %tbody
       - @items.each do |item|
         %tr
           %td{:style => "data-title: 'Name'"}= item.name
+          %td= item.units.status_in.count
+          %td= item.units.active.count
+          %td= item.units.count
           %td{:style => "data-title: 'Description'"}= item.description
           %td{:style => "data-title: 'Action'"}
             = link_to 'Show', item

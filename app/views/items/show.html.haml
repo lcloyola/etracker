@@ -11,6 +11,7 @@
 %table.table.table-striped.sortable
   %thead
     %th ID
+    %th Name / Description
     %th Brand
     %th Serial Number
     %th Model
@@ -23,6 +24,7 @@
     - @item.units.each do |i|
       %tr
         %td= i.id
+        %td= i.name
         %td= i.brand
         %td= i.serial_no
         %td= i.model

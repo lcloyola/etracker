@@ -29,6 +29,9 @@
     = collection_select :unit, :location_id, Location.all, :id, :name
   %h3 Details
   .field
+    = f.label :name_or_description
+    = f.text_field :name
+  .field
     = f.label :item_type
     = collection_select :unit, :item_id, Item.all, :id, :name, :include_blank => true
   .field
