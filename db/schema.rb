@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121110175132) do
+ActiveRecord::Schema.define(:version => 20130218071035) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -62,9 +62,11 @@ ActiveRecord::Schema.define(:version => 20121110175132) do
     t.datetime "avatar_updated_at"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.boolean  "logged_in",            :default => true
   end
 
   add_index "units", ["location_id"], :name => "index_units_on_location_id"
+  add_index "units", ["logged_in"], :name => "index_units_on_logged_in"
   add_index "units", ["user_id"], :name => "index_units_on_user_id"
 
   create_table "users", :force => true do |t|
