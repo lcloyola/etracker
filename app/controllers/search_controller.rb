@@ -1,6 +1,8 @@
 class SearchController < ApplicationController
   def index
     @unit = Unit.new
+    @logged_in_units = Unit.assigned.status_in
+    @logged_out_units = Unit.assigned.status_out
   end
   def unit
     if Unit.exists?(:id => params[:post][:id])

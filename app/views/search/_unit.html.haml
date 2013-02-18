@@ -1,8 +1,7 @@
-%h1 Search Unit
 = form_for @unit, :url => "/search_unit" do |f|
   .field
     %h4 Search and update unit:
-    %br= text_field :post, :id
+    %br= text_field :post, :id, :style => "width:100%"
   .actions
-    = f.submit 'Search'
+    = f.submit 'Search ID', :class => "btn btn-info"
 

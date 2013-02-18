@@ -42,6 +42,7 @@ class Unit < ActiveRecord::Base
   scope :assigned, where("user_id IS NOT NULL")
   scope :active, where(:is_active => true)
   scope :status_in, where(:logged_in => true)
+  scope :status_out, where(:logged_in => false)
 
   def unassigned?
     return true unless self.item_id.present?
@@ -52,7 +53,7 @@ class Unit < ActiveRecord::Base
     return "<div class='label label-important'>logged out</div>"
   end
   def fullname
-    return "#{self.id} (#{self.item.name} #{self.brand} #{self.model})"
+    return "#{self.id} #{self.name}(#{self.item.name} #{self.brand} #{self.model})"
   end
   # toggle status and create new log
   def toggle(user)

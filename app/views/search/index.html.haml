@@ -1,4 +1,13 @@
 = raw notice
-= render "unit"
-= render "batch"
-
+.row-fluid
+  .span4.well
+    = render "unit"
+  .span4.well
+    = render "batch_out"
+  .span4.well
+    = render "batch_in"
+:javascript
+  $(document).ready(function() {
+    $(".chzn-in").chosen();
+    $(".chzn-out").chosen();
+  });		

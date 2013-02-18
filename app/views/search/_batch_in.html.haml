@@ -1,0 +1,5 @@
+%h4 Log in units:
+= form_for @unit, :url => "/logout_unit" do |f|
+  %br= select_tag "units", options_from_collection_for_select(@logged_out_units, "id", "fullname"), :multiple => true, :class =>"chzn-in", :style=>"width:100%"
+  %br= f.submit 'Log in', :class => "btn btn-success"
+  %p * Only logged out items may be logged in
