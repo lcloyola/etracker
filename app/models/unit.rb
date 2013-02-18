@@ -46,20 +46,17 @@ class Unit < ActiveRecord::Base
     return true unless self.item_id.present?
     return false
   end
-  def logged_in?
-    return true if self.logs.empty? || self.logs.last.status == UnitStatus::In
-    return false
-  end
-  def status_invert
-    return UnitStatus::Out if self.logs.empty? || self.logs.last.status == UnitStatus::In
-    return UnitStatus::In
-  end
   def status_label
-    return "logged in" if self.logs.empty? || self.logs.last.status == UnitStatus::In
+    return "logged in" if self.logged_in
     return "logged out"
   end
   def fullname
     return "#{self.id} (#{self.item.name} #{self.brand} #{self.model})"
+  end
+  # toggle status and create new log
+  def toggle(user)
+    self.update_attribute(:logged_in, !self.logged_in)
+    Log.create(:unit_id => self.id, :user_id => user.id, :status => self.logged_in)
   end
 protected
   def generate_barcode_image

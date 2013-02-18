@@ -9,7 +9,7 @@
 
   = f.submit 'Save', :class => "btn btn-primary"
   - unless @unit.new_record? || @unit.unassigned?
-    - if @unit.logged_in?
+    - if @unit.logged_in
       = f.submit 'Save & Logout', :class => "btn btn-danger"
     - else
       = f.submit 'Save & Login', :class => "btn btn-success"

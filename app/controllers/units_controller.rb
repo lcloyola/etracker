@@ -64,7 +64,7 @@ class UnitsController < ApplicationController
         if params[:commit] == "Save"
           format.html { redirect_to @unit, notice: '<div class="alert alert-success">Unit was successfully updated.</div>' }
         else
-          newL = Log.create(:unit_id => @unit.id, :user_id => current_user, :status => @unit.status_invert)
+          @unit.toggle(current_user)
           format.html {
             redirect_to "/search", notice: "<div class='alert alert-success'>Unit was successfully #{@unit.status_label}</div>"
           }
