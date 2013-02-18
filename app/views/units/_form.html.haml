@@ -1,5 +1,7 @@
 %h3= @unit.name
-%h5= @unit.fullname
+%h5
+  = @unit.fullname
+  = raw @unit.status_label
 = form_for @unit do |f|
   - if @unit.errors.any?
     #error_explanation

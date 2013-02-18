@@ -66,7 +66,7 @@ class UnitsController < ApplicationController
         else
           @unit.toggle(current_user)
           format.html {
-            redirect_to "/search", notice: "<div class='alert alert-success'>Unit was successfully #{@unit.status_label}</div>"
+            redirect_to @unit, notice: "<div class='alert alert-success'>Unit was successfully #{@unit.status_label}</div>"
           }
           format.json { head :no_content }
         end
@@ -113,8 +113,9 @@ class UnitsController < ApplicationController
     location = Location.find(params[:details][:location_id])
 
     @units = Unit.find(:all, :conditions => {:id => params[:units], :logged_in => !val})
-    @units.map { |x| x.update_attributes(:logged_in => val, :location_id => location.id)}
+    # @units.map { |x| x.update_attributes(:logged_in => val, :location_id => location.id)}
+    @units.map { |x| x.toggle(current_user, location, "batch #{params[:commit]} to #{location.name}")}
 
-    redirect_to "/search", :notice => "batch #{params[:commit]} successful."
+    redirect_to "/search", :notice => "<div class='alert alert-success'>Batch #{params[:commit]} successful.</div>"
   end
 end

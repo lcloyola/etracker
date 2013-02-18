@@ -56,9 +56,10 @@ class Unit < ActiveRecord::Base
     return "#{self.id} #{self.name}(#{self.item.name} #{self.brand} #{self.model})"
   end
   # toggle status and create new log
-  def toggle(user)
+  def toggle(user, location = nil, remarks = "individual toggle")
     self.update_attribute(:logged_in, !self.logged_in)
-    Log.create(:unit_id => self.id, :user_id => user.id, :status => self.logged_in)
+    self.update_attribute(:location_id, location.id) unless location.nil?
+    Log.create(:unit_id => self.id, :user_id => user.id, :status => self.logged_in, :remarks => remarks)
   end
 protected
   def generate_barcode_image
