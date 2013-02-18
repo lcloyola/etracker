@@ -107,5 +107,14 @@ class UnitsController < ApplicationController
     end
     redirect_to "/available_barcode"
   end
-end
 
+  def toggle
+    params[:commit] == "Log in" ? val = true : val = false
+    location = Location.find(params[:details][:location_id])
+
+    @units = Unit.find(:all, :conditions => {:id => params[:units], :logged_in => !val})
+    @units.map { |x| x.update_attributes(:logged_in => val, :location_id => location.id)}
+
+    redirect_to "/search", :notice => "batch #{params[:commit]} successful."
+  end
+end

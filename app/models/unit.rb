@@ -30,7 +30,7 @@ class Unit < ActiveRecord::Base
   has_many :logs
 
   attr_accessible :aquisition_cost, :aquisition_date, :brand, :condition, :is_active, :model, :serial_no, :name
-  attr_accessible :barcode_file_name, :item_id, :user_id, :location_id
+  attr_accessible :barcode_file_name, :item_id, :user_id, :location_id, :logged_in
 
 	has_attached_file :avatar
 	has_attached_file :barcode

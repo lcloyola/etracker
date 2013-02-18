@@ -3,6 +3,7 @@ class SearchController < ApplicationController
     @unit = Unit.new
     @logged_in_units = Unit.assigned.status_in
     @logged_out_units = Unit.assigned.status_out
+    @locations = Location.all
   end
   def unit
     if Unit.exists?(:id => params[:post][:id])

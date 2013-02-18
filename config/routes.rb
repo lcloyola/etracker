@@ -3,6 +3,7 @@ Etracker::Application.routes.draw do
   match "available_barcode"        => "units#barcodes_available"
   post  "/search_unit"             => "search#unit"
   match "/search"                  => "search#index"
+  post  "/toggle_status"           => "units#toggle"
 
   resources :units
 
