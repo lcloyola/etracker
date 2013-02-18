@@ -3,11 +3,11 @@ class SearchController < ApplicationController
     @unit = Unit.new
   end
   def unit
-    @unit = Unit.find(params[:post][:id])
-    if @unit.present?
+    if Unit.exists?(:id => params[:post][:id])
+      @unit = Unit.find(params[:post][:id])
       redirect_to "/units/#{@unit.id}/edit"
     else
-      redirect_to "/search/index"
+      redirect_to "/search", notice: '<div class="alert alert-error">Unit not found.</div>'
     end
   end
 end
