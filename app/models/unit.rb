@@ -41,14 +41,15 @@ class Unit < ActiveRecord::Base
   scope :unassigned, where(:user_id => nil)
   scope :assigned, where("user_id IS NOT NULL")
   scope :active, where(:is_active => true)
+  scope :status_in, where(:logged_in => true)
 
   def unassigned?
     return true unless self.item_id.present?
     return false
   end
   def status_label
-    return "logged in" if self.logged_in
-    return "logged out"
+    return "<div class='label label-success'>logged in</div>" if self.logged_in
+    return "<div class='label label-important'>logged out</div>"
   end
   def fullname
     return "#{self.id} (#{self.item.name} #{self.brand} #{self.model})"

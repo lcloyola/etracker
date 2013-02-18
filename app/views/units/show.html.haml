@@ -2,10 +2,8 @@
 %h4
   = @unit.item.name
   = "(#{@unit.id})"
-  - if @unit.status_label == "logged in"
-    .label.label-success= "logged in"
-  - else
-    .label.label-warning= "logged outs"
+  = raw @unit.status_label
+
 %p
   %b Aquisition date:
   = @unit.aquisition_date

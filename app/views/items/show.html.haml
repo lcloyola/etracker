@@ -1,7 +1,9 @@
 %p#notice= notice
 
 %h3= @item.name
-%h5= "#{@item.units.active.count} #{@item.quantity_unit} active out of #{@item.units.count}  units"
+%h6
+  .label.label-warning= @item.stats_active
+  .label.label-info= @item.stats
 %p
   %b Description:
   = @item.description
@@ -12,9 +14,11 @@
     %th Brand
     %th Serial Number
     %th Model
+    %th Status
     %th Location
-    %th User
+    %th In charge
     %th Condition
+    %th Actions
   %tbody
     - @item.units.each do |i|
       %tr
@@ -22,9 +26,14 @@
         %td= i.brand
         %td= i.serial_no
         %td= i.model
+        %td= raw i.status_label
         %td= i.location.name
         %td= i.user.email
         %td= i.condition
+        %td      
+          = link_to 'Show', i
+          = link_to 'Edit', edit_unit_path(i)
+
 = link_to 'Edit', edit_item_path(@item)
 \|
 = link_to 'Back', items_path
